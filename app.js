@@ -1,11 +1,14 @@
+require("dotenv").config()
+// ? imports and configures dotenv
+
 const express = require("express")
 // ? using dependency requires installing AND importing it
 const app = express()
 // ? invoke express top level function
 
-const PORT = 4000
+const PORT = process.env.PORT
 // ? a door into our application
-const HOST = "127.0.0.1"
+const HOST = process.env.HOST
 // ? an IP address of our app - loopback or home address or localhost
 
 // ? host + port => socket
@@ -40,6 +43,7 @@ app.get("/api/greet", (req, res) => {
 
 app.listen(PORT, HOST, () => {
 	console.log(`[server] listening on ${HOST}:${PORT}`)
+	console.log(`[server] process running on PID: ${process.pid}`)
 })
 
 
